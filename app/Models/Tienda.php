@@ -22,4 +22,12 @@ class Tienda extends Model
         }
         return $miArray;
     }
+    //Scopes --------------------------
+    public function scopeLocalidad($query, $v){
+        if($v!="%"){
+            return $query->where('localidad', $v);
+        }
+        //return $query->where('localidad', 'like', $v);
+        return $query->where('localidad', 'like', $v);
+    }
 }
