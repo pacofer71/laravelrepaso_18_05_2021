@@ -15,7 +15,7 @@
                         @endif
                     @endforeach
                 </select>
-            </form>
+
 
         </div>
         <div class="py-2">
@@ -24,15 +24,20 @@
         </div>
         <div>
             <select name="apellidos" class="py-2" onchange="this.form.submit()">
-               @foreach($apellidos as $k=>$v)
-               <option value="{{$k}}">{{$v}}</option>
-               @endforeach
+                @foreach ($apellidos as $k => $v)
+                    @if($request->apellidos==$k)
+                    <option value="{{ $k }}" selected>{{ $v }}</option>
+                    @else
+                    <option value="{{ $k }}">{{ $v }}</option>
+                    @endif
+                @endforeach
             </select>&nbsp;
         </div>
         <div class="py-2">
             <i class="fas fa-search"></i>
             <b>Apellidos:</b>&nbsp;&nbsp;
         </div>
+        </form>
     </div>
     <a href="{{ route('trabajadores.create') }}" class="btn btn-success"><i class="fas fa-plus"></i> Crear
         Trabajador</a>

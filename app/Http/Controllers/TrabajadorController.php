@@ -21,10 +21,12 @@ class TrabajadorController extends Controller
         $apellidos[4]="U~Z";
 
         if(!isset($request->tienda)) $request->tienda="%";
+
         $tiendas=Tienda::orderBy('nombre')->get();
         $trabajadores=Trabajador::orderBy('apellidos')
         ->tienda($request->tienda)
-        ->paginate(5);
+        ->apellido($request->apellidos)
+        ->paginate(3);
         return view('trabajadores.index', compact('apellidos', 'trabajadores', 'tiendas', 'request'));
     }
 
